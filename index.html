@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Řezná rychlost kotouče</title>
+</head>
+<body>
+  <h1>Řezná rychlost brusného kotouče</h1>
+
+  <p>
+    <label for="prumer">Průměr kotouče (mm):</label>
+    <input type="number" id="prumer" value="125">
+  </p>
+
+  <p>
+    <label for="otacky">Otáčky (ot/min):</label>
+    <input type="number" id="otacky" value="11000">
+  </p>
+
+  <button id="vypocitat">Vypočítat</button>
+
+  <p id="vysledek"></p>
+
+  <script>
+    function vypocitej() {
+      const prumer = Number(document.getElementById("prumer").value);
+      const otacky = Number(document.getElementById("otacky").value);
+
+      // průměr v metrech × π = obvod; otáčky / 60 = otáčky za sekundu
+      const rychlost = prumer / 1000 * Math.PI * otacky / 60;
+
+      document.getElementById("vysledek").textContent =
+        "Řezná rychlost: " + rychlost.toFixed(1) + " m/s";
+    }
+
+    document.getElementById("vypocitat").addEventListener("click", vypocitej);
+  </script>
+</body>
+</html>
